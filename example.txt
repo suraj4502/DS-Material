@@ -1,4 +1,2 @@
 Hello, this is an example of file handling in Python.
 We are writing to a file using Python's file handling.
-
-This is an additional line appended to the file.

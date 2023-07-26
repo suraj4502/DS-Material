@@ -23,41 +23,44 @@ Enter 'sq' to calculate square of a number.
         return (f"The result is {result}.")
     
     
-    if operator == 's':
+    elif operator == 's':
         a = float(input("enter the first number : "))
         b = float(input("Enter a second number : "))
         result = our_math.sub(a,b)
         return (f"The result is {result}.")
     
-    if operator == 'm':
+    elif operator == 'm':
         a = float(input("enter the first number : "))
         b = float(input("Enter a second number : "))
         result = our_math.multiply(a,b)
         return (f"The result is {result}.")
     
-    if operator == 'a':
+    elif operator == 'a':
         a = float(input("enter the first number : "))
         b = float(input("Enter a second number : "))
         result = our_math.add(a,b)
         return (f"The result is {result}.")
     
-    if operator == 'd':
+    elif operator == 'd':
         a = float(input("enter the first number : "))
         b = float(input("Enter a second number : "))
         result = our_math.div(a,b)
         return (f"The result is {result}.")
     
-    if operator == 'sq':
-        a = float(input("enter the number : "))
-        result = our_math.square(a)
+    elif operator == 'sq':
+        result = our_math.square(float(input("enter the number : ")))
         return (f"The result is {result}.")
 
+    else :
+        print("Enter correcr operator.")
     
-    
+
+  
     
 
 print(main())
-print("Thanks for accessing this app")
+greetings.ending()
+    
 
 # print(our_math.square(4))
 

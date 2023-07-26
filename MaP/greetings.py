@@ -9,3 +9,7 @@ def greet_with_name(name):
     print()
     
     
+def ending():
+    print()
+    print("Thanks for Using this app.")
+    print()
