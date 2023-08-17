@@ -62,3 +62,14 @@ Select the following options :
         print("INvalid input.")
         print("TRY AGAIN 🤓")
         calculate()
+        
+    
+    inp = input("""
+Want to performs operations again?
+
+Enter Y for yes.
+Enter N for no.                
+""")
+    
+    if inp.upper() == 'Y':
+        calculate()
