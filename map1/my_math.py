@@ -18,5 +18,8 @@ def square(a):
 def area(radius):
     return pi*radius**2
 
+def square_root(num):
+    return num ** 0.5
+
 
 
