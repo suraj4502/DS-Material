@@ -31,8 +31,8 @@ class TaskManager:
     def view_task(self):
         print()
         for index, task in enumerate(self.tasks,start=1):
-            status = "Completed" if task.completed else "Not completed"
-            print(f"{index}. Title: {task.title}, Description: {task.description}, Status: {status}")
+                status = "Completed" if task.completed else "Not completed"
+                print(f"{index}. Title: {task.title}, Description: {task.description}, Status: {status}")
             
     def mark_completed(self,task_index):
         if 1 <= task_index <= len(self.tasks):
