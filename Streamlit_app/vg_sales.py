@@ -75,41 +75,67 @@ if inp == 'Overview.':
             
 # 'Year wise Analyis.'
 elif inp == 'Year wise Analyis.':
+        
         st.title("Year wise analysis📅")
+        
         
         st.header("Year wise Sales.")
         fig = px.line(df.groupby('Year')['Global_Sales'].sum().reset_index(), x='Year', y='Global_Sales')
-        fig.update_yaxes(title_text='Global Sales')
-        fig.update_traces(line=dict(color='red'))
-        fig.update_layout(
-        xaxis_title='Year',
-        yaxis_title='Sales',
-        width=800,
-        height=400,
-        margin=dict(l=10, r=10, t=10, b=10),
-        xaxis=dict(showgrid=False),
-        yaxis=dict(showgrid=True, gridcolor='#61677A'),
-        hovermode='x',  # Show tooltips on hover
-        hoverlabel=dict(bgcolor='#1A1A40', font_size=12),  # Tooltip style
-        )
-        fig.update_layout(plot_bgcolor='#0E1117' ,)
         st.plotly_chart(fig)
+        
         
         st.header("Number of Games Released Over Time.")
         games_released_over_time = (df.groupby('Year')['Name'].count().reset_index()).rename(columns = {'Name':'count'})
         fig = px.bar(games_released_over_time, x='Year', y='count',text_auto=True,
-                color_discrete_sequence=['#FCAEAE'])
-        
-        fig.update_xaxes(title_text='Year', tickmode='linear', tick0=2010, dtick=1)
-        fig.update_yaxes(title_text='Count')
-        fig.update_layout(
-        plot_bgcolor='#0E1117' ,
-        width=800,
-        height=400,
-        margin=dict(l=10, r=10, t=10, b=10),
-        xaxis=dict(showgrid=False),
-        yaxis=dict(showgrid=True, gridcolor='#61677A'),
-        hoverlabel=dict(bgcolor='#1A1A40', font_size=12),  # Tooltip style
-        )
-        
+                color_discrete_sequence=['#FCAEAE']) 
         st.plotly_chart(fig)
+        
+
+
+#Genre wise Analysis.
+elif inp == 'Genre wise Analysis.':
+        st.title('Genre wise Analysis🧿')
+        
+        # top genres based on GLoabal Sales
+        st.header("Gloabal Sales in each genre.")
+        temp = df.groupby('Genre')['Global_Sales'].sum().sort_values(ascending = False)
+        fig = px.bar(temp, x = temp.index,y = temp)
+        st.plotly_chart(fig)
+        
+        temp = temp.reset_index()
+        st.header("Contribution of each genre in sales.")
+        fig = px.pie(temp,values = 'Global_Sales' , names = 'Genre')
+        st.plotly_chart(fig)
+        
+elif inp == 'Platform wise Analysis.':
+        st.title("Platform wise analasis")
+        
+        st.subheader('Top platforms based on sales.')
+        temp = (df.groupby('Platform')['Global_Sales'].sum()
+                .sort_values(ascending = False).reset_index().head(10))
+        fig =px.bar(temp,x='Platform',y= 'Global_Sales')
+        st.plotly_chart(fig)
+        
+        
+elif inp == 'Publisher wise Analysis.':
+        st.title("Publisher wise Analysis.")
+        
+        st.header("Top 10 publishers by sales.")
+        temp = (df.groupby("Publisher")['Global_Sales'].sum()
+                .reset_index()
+                .sort_values("Global_Sales",ascending= False)
+                .head(10))
+        
+        fig =px.bar(temp,x = 'Publisher',y= 'Global_Sales')
+        st.plotly_chart(fig)
+        
+        
+        st.subheader("Contriution in Sales.")
+        fig = px.pie(temp,values='Global_Sales',names= 'Publisher')
+        st.plotly_chart(fig)
+        
+        st.subheader("Running Bar chart , Publisher and Sales.")
+        df1=df[df['Publisher'].isin(temp.Publisher.unique())]
+        fig =px.bar(df1, x='Publisher',y = 'Global_Sales',animation_frame='Year',animation_group='Publisher',range_y=[0,60])
+        st.plotly_chart(fig)
+        
