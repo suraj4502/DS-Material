@@ -1,0 +1,5 @@
+Hello, this is an example of file handling in Python.
+We are writing to a file using Python's file handling.
+this is the 3rd line
+kjhs;adfh
+This is an additional line appended to the file.THIS IS THE NEW FILE.
