@@ -15,8 +15,9 @@ def main():
     elif o =='4':
         try:
             m.div()
-        except Exception as e:
-            print(e.args)
+        except:
+            print("please dont use zero in denominator.")
+            m.div()
     elif o == '5':
         m.divisibility()
     elif o =='6':
